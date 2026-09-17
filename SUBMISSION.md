@@ -1,0 +1,7 @@
+Time spent
+
+The work took about four hours in total, split over two sessions. The first hour went to setting up the environment: verifying Git and Python, creating and cloning the repository, and getting a local server running. The remaining three hours covered writing the initial HTML and JavaScript by hand, reproducing the CORS error that appears when the page is opened from the file system, parsing the CSV, writing the requirements, and building the application in steps with Claude Code. Two things inflate that number. Most of the first session went to Windows-specific setup problems rather than to the app itself, and a good part of the second went into features beyond what the case asks for, such as displaying the full evolution chain and an intro fact computed from the data set. The core requirement was reached well before the four hours were up.
+
+Cost
+
+No direct cost. Sprite images are fetched from the public PokeAPI repository, hosting is GitHub Pages, and the app makes no API calls, so there is no runtime cost and no API key. AI assistance was Claude, used through both the chat interface and Claude Code, on a Claude Pro subscription at 20 USD per month. Claude Pro does not bill per token but limits usage in rolling windows of roughly five hours. This case consumed approximately 50 to 60 percent of one such window, which is well under a tenth of what the subscription allows in a month. The marginal cost of the case was therefore effectively nothing beyond a subscription I already had.
