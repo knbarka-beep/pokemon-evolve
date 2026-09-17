@@ -1,12 +1,62 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Should I evolve this Pokemon?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Should I evolve this Pokemon?</h1>
-  <p id="status">Laster ...</p>
+  <div id="dekor" aria-hidden="true"></div>
+
+  <header class="hero">
+    <img id="hero-bilde" class="hero-bilde" alt="" aria-hidden="true">
+    <h1>Should I evolve this Pokemon?</h1>
+  </header>
+
+  <div class="wrap">
+    <p id="status">Loading ...</p>
+
+    <section id="intro" class="kort" hidden></section>
+
+    <div id="velger" hidden>
+      <label for="sok">Find a Pokémon:</label>
+      <input type="text" id="sok" autocomplete="off" placeholder="Type a name ...">
+      <ul id="sok-resultater" class="sok-resultater" hidden></ul>
+    </div>
+
+    <main id="resultat" hidden>
+      <section id="valgt-kort" class="kort">
+        <div class="kort-topp">
+          <div id="valgt-bilde-wrap" class="bilde-wrap"></div>
+          <div>
+            <h2 id="valgt-navn"></h2>
+            <div id="valgt-typer" class="typer"></div>
+          </div>
+        </div>
+        <div id="valgt-info-liste"></div>
+        <div id="valgt-stats" class="stat-liste"></div>
+      </section>
+
+      <section class="kort">
+        <h3 class="seksjon-tittel">Evolution chain</h3>
+        <div id="kjede-innhold"></div>
+      </section>
+
+      <section class="kort">
+        <h3 class="seksjon-tittel">Evolved from</h3>
+        <div id="forgjenger-innhold"></div>
+      </section>
+
+      <section>
+        <h3 class="seksjon-tittel">Evolves into</h3>
+        <div id="utvikling-innhold"></div>
+      </section>
+    </main>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

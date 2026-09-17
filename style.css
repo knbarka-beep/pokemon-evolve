@@ -1,0 +1,714 @@
+:root {
+  --bg: #ede0c8;
+  --panel: #fbf4e6;
+  --ink: #3a2515;
+  --muted: #7a6148;
+  --line: #3a2515;
+  --line-soft: #cdb996;
+  --accent: #c8641f;
+  --accent-ink: #fbf4e6;
+  --opp: #4c6b1f;
+  --ned: #a33a1c;
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.4;
+  position: relative;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  margin-bottom: 0;
+  overflow: hidden;
+  background: var(--ink);
+  border-bottom: 4px solid var(--line);
+}
+
+.hero-bilde {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(64%, 640px);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 8%;
+  z-index: 0;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+h1 {
+  position: relative;
+  z-index: 1;
+  font-family: "Press Start 2P", "Segoe UI", monospace;
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--accent);
+  margin: 0 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(58, 37, 21, 0.6);
+  border: 3px solid var(--line);
+  text-shadow:
+    -2px -2px 0 var(--ink),
+     2px -2px 0 var(--ink),
+    -2px  2px 0 var(--ink),
+     2px  2px 0 var(--ink),
+     4px  4px 0 rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    height: 220px;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+}
+
+h2, h3, h4 {
+  margin: 0;
+}
+
+.seksjon-tittel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 1.4rem 0 0.5rem;
+}
+
+#status {
+  color: var(--muted);
+}
+
+#intro {
+  margin-bottom: 1.5rem;
+}
+
+.intro-innhold {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.intro-bilde-wrap {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+}
+
+.intro-bilde {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+#intro p {
+  margin: 0;
+}
+
+#velger {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+#velger label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+
+#sok {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font-size: 1rem;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+#sok:focus {
+  outline: none;
+  background: #fffaf0;
+  border-color: var(--accent);
+}
+
+.sok-resultater {
+  position: absolute;
+  z-index: 50;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: -2px;
+  /* ca. 8 rader a 46px, uavhengig av hvor langt ned pa siden feltet star */
+  max-height: 368px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  padding: 0;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-top: none;
+  box-shadow: 0 8px 16px rgba(58, 37, 21, 0.25);
+}
+
+.sok-resultater-opp {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: -2px;
+  border-top: 2px solid var(--line);
+  border-bottom: none;
+  box-shadow: 0 -8px 16px rgba(58, 37, 21, 0.25);
+}
+
+.sok-resultater li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  border-top: 1px solid var(--line-soft);
+}
+
+.sok-resultater li:hover {
+  background: var(--bg);
+}
+
+.sok-bilde-wrap {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+}
+
+.sok-bilde {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.sok-navn {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.sok-id {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.kort {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.kort + .kort,
+section + section {
+  margin-top: 1rem;
+}
+
+.kort-topp {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.bilde-wrap {
+  width: 80px;
+  height: 80px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+}
+
+.bilde {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.kandidat-kort .bilde-wrap,
+.kandidat-kort .bilde {
+  width: 64px;
+  height: 64px;
+}
+
+.kandidat-kort img.bilde {
+  border: 1px solid var(--line-soft);
+  background: var(--bg);
+  object-fit: contain;
+}
+
+#valgt-navn {
+  font-size: 1.15rem;
+}
+
+.typer {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.type {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.info-liste {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 1rem;
+  margin: 0 0 0.9rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.info-liste div {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-liste dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.info-liste dd {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.stat-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stat-rad {
+  display: grid;
+  grid-template-columns: 76px 1fr 30px;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.stat-navn {
+  color: var(--muted);
+}
+
+.stat-verdi {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-bar {
+  position: relative;
+  height: 8px;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+}
+
+.stat-fyll {
+  display: block;
+  height: 100%;
+}
+
+.stat-rad-sammenlign {
+  grid-template-columns: 76px 1fr 38px;
+}
+
+.stat-barer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-bar-liten {
+  height: 5px;
+}
+
+.stat-fyll-na {
+  background: #a99a80;
+}
+
+.stat-diff {
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.diff-opp {
+  color: var(--opp);
+}
+
+.diff-ned {
+  color: var(--ned);
+}
+
+.diff-lik {
+  color: var(--muted);
+}
+
+.sum-diff {
+  margin: 0.7rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: 0.85rem;
+}
+
+.notis {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.fokus-velger {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--line);
+}
+
+.fokus-velger label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.fokus-velger select {
+  padding: 0.35rem 0.5rem;
+  font-size: 0.9rem;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.verdikt {
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  border-top: 2px solid var(--line);
+}
+
+.verdikt-svar {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--line);
+  color: var(--panel);
+}
+
+.verdikt-ja .verdikt-svar {
+  background: var(--opp);
+}
+
+.verdikt-ja-caveat .verdikt-svar {
+  background: var(--accent);
+}
+
+.verdikt-nei .verdikt-svar {
+  background: var(--ned);
+}
+
+.verdikt-tekst {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+}
+
+.mini-pokemon {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.mini-bilde {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+  image-rendering: pixelated;
+}
+
+.mini-navn {
+  font-weight: 600;
+}
+
+/* Utviklingskjede-tre */
+
+.tre, .tre ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.tre {
+  padding-left: 0;
+}
+
+.tre li {
+  position: relative;
+  padding: 0.3rem 0 0.3rem 1.2rem;
+}
+
+.tre ul li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  border-left: 2px solid var(--line-soft);
+}
+
+.tre ul li::after {
+  content: '';
+  position: absolute;
+  top: 1.05rem;
+  left: 0;
+  width: 1rem;
+  border-top: 2px solid var(--line-soft);
+}
+
+.tre ul li:last-child::before {
+  bottom: auto;
+  height: 1.05rem;
+}
+
+.tre-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.5rem 0.2rem 0.2rem;
+  border: 1px solid transparent;
+}
+
+.tre-node-valgt {
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  font-weight: 700;
+}
+
+.tre-bilde-wrap {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 1px solid var(--line-soft);
+}
+
+.tre-bilde {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.tre-navn {
+  font-size: 0.9rem;
+}
+
+/* Dekorative sprites: offisiell kunst, hentet fra samme PokeAPI-repo som resten av bildene */
+
+#dekor {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dekor-sprite {
+  position: fixed;
+  object-fit: contain;
+  opacity: 0.32;
+}
+
+.dekor-groudon {
+  width: 380px;
+  height: 380px;
+  bottom: -30px;
+  left: -30px;
+}
+
+.dekor-rayquaza {
+  width: 380px;
+  height: 380px;
+  bottom: -30px;
+  right: -30px;
+  transform: scaleX(-1);
+}
+
+.dekor-pikachu {
+  width: 220px;
+  height: 220px;
+  top: 34%;
+  right: -10px;
+  opacity: 0.28;
+}
+
+@media (max-width: 1100px) {
+  .dekor-groudon,
+  .dekor-rayquaza {
+    width: 240px;
+    height: 240px;
+    bottom: -18px;
+  }
+
+  .dekor-groudon {
+    left: -18px;
+  }
+
+  .dekor-rayquaza {
+    right: -18px;
+  }
+
+  .dekor-pikachu {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 760px) {
+  .dekor-sprite {
+    display: none;
+  }
+}
+
+/* Pokéball-dekor, tegnet i ren CSS (ingen ekstern grafikk) */
+
+.pokeball {
+  position: fixed;
+  display: block;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 3px solid var(--line);
+  opacity: 0.4;
+  overflow: hidden;
+}
+
+.pokeball::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #c1462a;
+  border-bottom: 3px solid var(--line);
+}
+
+.pokeball::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32%;
+  height: 32%;
+  background: var(--panel);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dekor-ball-1 {
+  width: 70px;
+  height: 70px;
+  top: 8%;
+  left: 4%;
+  transform: rotate(-12deg);
+}
+
+.dekor-ball-2 {
+  width: 46px;
+  height: 46px;
+  top: 46%;
+  left: 2%;
+  transform: rotate(8deg);
+}
+
+.dekor-ball-3 {
+  width: 56px;
+  height: 56px;
+  top: 14%;
+  right: 5%;
+  transform: rotate(15deg);
+}
+
+.dekor-ball-4 {
+  width: 90px;
+  height: 90px;
+  bottom: 6%;
+  right: 22%;
+  transform: rotate(-6deg);
+}
+
+@media (max-width: 760px) {
+  .pokeball {
+    display: none;
+  }
+}
